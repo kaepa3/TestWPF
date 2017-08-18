@@ -1,6 +1,8 @@
 ﻿using System.Windows;
 using NLog;
 using System.Threading.Tasks;
+using System;
+using System.Linq;
 
 namespace WpfApp2
 {
@@ -9,18 +11,18 @@ namespace WpfApp2
     /// </summary>
     public partial class App : Application
     {
-        private async void Application_Startup(object sender, StartupEventArgs e)
+        protected override async void OnStartup(StartupEventArgs e)
         {
+        
             //  ログの初期化
             var log = LogManager.GetLogger("app_log");
             App1.Logging.Initialize(new WinlLog(log));
             App1.Logging.info("起動");
-            var mainWindow = new MainWindow(); //←起動したい画面クラス名
             Splash wnd = new Splash();
             wnd.Show();
             var result = await RunTaskSync(wnd);
             wnd.Close();
-            mainWindow.Show();
+            base.OnStartup(e);
         }
 
         public Task<string> RunTaskSync(Splash wnd)
@@ -30,8 +32,11 @@ namespace WpfApp2
 
         public string Run(Splash wnd)
         {
-            System.Threading.Thread.Sleep(1000);
+            System.Threading.Thread.Sleep(500);
+            var lang = new Language.Language();
+            lang.SetLanguage("ja-jp", this);
             return "kido";
         }
+
     }
 }

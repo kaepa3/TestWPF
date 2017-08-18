@@ -13,17 +13,7 @@
         <vm:BaseViewModel/>
     </Window.DataContext>
     <Window.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary>
 
-                </ResourceDictionary>
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Shadows.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ToggleButton.xaml" />
-
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
     </Window.Resources>
     <materialDesign:DialogHost Identifier="RootDialog" SnackbarMessageQueue="{Binding ElementName=MainSnackbar, Path=MessageQueue}">
         <materialDesign:DrawerHost IsLeftDrawerOpen="{Binding ElementName=MenuToggleButton, Path=IsChecked}">
@@ -79,7 +69,7 @@
                                     <RowDefinition Height="auto"/>
                                 </Grid.RowDefinitions>
                                 <materialDesign:PackIcon Kind="OpenInNew" Height="50" Width="Auto" HorizontalAlignment="Stretch" Margin="0,0,6,0"/>
-                                <TextBlock Text="新規作成" Grid.Row ="1"/>
+                                <TextBlock Text="{DynamicResource new_start }" Grid.Row ="1"/>
                             </Grid>
                         </Button.Content>
                     </Button>
@@ -91,7 +81,7 @@
                                     <RowDefinition Height="auto"/>
                                 </Grid.RowDefinitions>
                                 <materialDesign:PackIcon Kind="Database" Height="50" Width="50" HorizontalAlignment="Stretch" Margin="0,0,6,0"/>
-                                <TextBlock Text="モデル読み込み" Grid.Row ="1"/>
+                                <TextBlock Text="{DynamicResource model_start }" Grid.Row ="1"/>
                             </Grid>
                         </Button.Content>
                     </Button>
