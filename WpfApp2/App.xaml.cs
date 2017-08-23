@@ -3,6 +3,7 @@ using NLog;
 using System.Threading.Tasks;
 using System;
 using System.Linq;
+using WpfApp2.View;
 
 namespace WpfApp2
 {
@@ -16,26 +17,26 @@ namespace WpfApp2
         
             //  ログの初期化
             var log = LogManager.GetLogger("app_log");
-            App1.Logging.Initialize(new WinlLog(log));
+            App1.Logging.Initialize(new WinLog(log));
             App1.Logging.info("起動");
             Splash wnd = new Splash();
             wnd.Show();
-            var result = await RunTaskSync(wnd);
+            await RunTaskSync();
             wnd.Close();
             base.OnStartup(e);
         }
 
-        public Task<string> RunTaskSync(Splash wnd)
+        public Task RunTaskSync()
         {
-            return Task.Run<string>(() => Run(wnd));
+            return Task.Run(() => RunInitial());
         }
 
-        public string Run(Splash wnd)
+        public void RunInitial()
         {
             System.Threading.Thread.Sleep(500);
             var lang = new Language.Language();
             lang.SetLanguage("ja-jp", this);
-            return "kido";
+            return;
         }
 
     }

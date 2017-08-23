@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using App1.Helpers;
 
-namespace WpfApp2.ViewModel
+namespace App1.ViewModels
 {
-    class SplashVM : App1.Helpers.ObservableObject
+    public class SplashViewModel : PageViewModelBase
     {
 
 

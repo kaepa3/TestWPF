@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="WpfApp2.View.StartingView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApp2.View"
+             xmlns:vm="clr-namespace:App1.ViewModels"
+             xmlns:en="clr-namespace:App1.Enums"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.DataContext>
+        <vm:StartingViewModel x:Name="ViewModel" />
+    </UserControl.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.5*"/>
+        </Grid.ColumnDefinitions>
+        <Button ToolTip="Icon" Grid.Column="1" Grid.Row="1" Height="auto" MaxHeight="150" MaxWidth="200" >
+            <Button.Content>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <materialDesign:PackIcon Kind="OpenInNew" Height="50" Width="Auto" HorizontalAlignment="Stretch" Margin="0,0,6,0"/>
+                    <TextBlock Text="{DynamicResource new_start }" Grid.Row ="1"/>
+                </Grid>
+            </Button.Content>
+        </Button>
+        <Button ToolTip="Icon" Grid.Column="3" Grid.Row="1" Height="auto" MaxHeight="150" MaxWidth="200"
+                Command="{ Binding ModelStartCommand}" CommandParameter="{x:Static en:PageKind.ReadModel}">
+            <Button.Content>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <materialDesign:PackIcon Kind="Database" Height="50" Width="50" HorizontalAlignment="Stretch" Margin="0,0,6,0"/>
+                    <TextBlock Text="{DynamicResource model_start }" Grid.Row ="1"/>
+                </Grid>
+            </Button.Content>
+        </Button>
+    </Grid>
+</UserControl>
