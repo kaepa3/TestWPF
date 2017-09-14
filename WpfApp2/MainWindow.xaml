@@ -8,7 +8,8 @@
         xmlns:vw="clr-namespace:WpfApp2.View"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        
+             xmlns:en="clr-namespace:App1.Enums"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         Title="MainWindow" Height="350" Width="525">
     <Window.DataContext>
         <vm:BaseViewModel x:Name="ViewModel" />
@@ -22,21 +23,21 @@
                                     HorizontalAlignment="Right" Margin="16"
                                     IsChecked="{Binding ElementName=MenuToggleButton, Path=IsChecked, Mode=TwoWay}" />
                     <ListBox x:Name="DemoItemsListBox" Margin="0 16 0 16" SelectedIndex="0"                         
-                             ItemsSource="{Binding DemoItems}">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate DataType="domain:DemoItem">
-                                <TextBlock Text="{Binding Name}" Margin="32 0 32 0" />
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
+                             ItemsSource="{Binding DemoItems}" >
+                        <Button Content="初期画面" Command="{Binding ChangePageFromSideberCommand}"
+                                CommandParameter="{x:Static en:PageKind.Base}"/>
+                        <Button Content="{StaticResource new_start}" Command="{Binding ChangePageFromSideberCommand}"
+                                CommandParameter="{x:Static en:PageKind.WizardView}"/>
+
                     </ListBox>
                 </DockPanel>
             </materialDesign:DrawerHost.LeftDrawerContent>
-            
+
             <DockPanel>
                 <materialDesign:ColorZone Padding="16" materialDesign:ShadowAssist.ShadowDepth="Depth2"
                                             Mode="PrimaryMid" DockPanel.Dock="Top">
                     <DockPanel>
-                        <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" IsChecked="False"
+                        <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" IsChecked="{Binding SideberCheck}"
                                         x:Name="MenuToggleButton"/>
                         <materialDesign:PopupBox DockPanel.Dock="Right" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
                             <StackPanel>
@@ -49,6 +50,7 @@
                 <Grid>
                     <vw:StartingView x:Name="StartingPage" Visibility="{Binding Base_Visible, ElementName=ViewModel}"/>
                     <vw:ReadModelView Visibility="{Binding ReadModel_Visible, ElementName=ViewModel}"/>
+                    <vw:WizardView Visibility="{Binding WizardView_Visible, ElementName=ViewModel}" />
                 </Grid>
             </DockPanel>
         </materialDesign:DrawerHost>

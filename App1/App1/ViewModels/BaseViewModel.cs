@@ -4,7 +4,7 @@ using App1.Event;
 using System.Windows;
 using System;
 using System.Reflection;
-using System.Collections.Generic;
+using System.Windows.Input;
 
 namespace App1.ViewModels
 {
@@ -12,6 +12,9 @@ namespace App1.ViewModels
     public delegate void ChangePageEventHandler(object sender, ChangePageEventArgs e);
     public class BaseViewModel : PageViewModelBase
     {
+        public BaseViewModel()
+        {
+        }
         readonly string VisiblePlefix = "_Visible";
         /// <summary>
         /// プロパティのキャッシュ（画面表示専用）
@@ -44,8 +47,8 @@ namespace App1.ViewModels
                 if ((Visibility)prop.GetValue(this) == Visibility.Visible)
                 {
                     info = prop;
+                    break;
                 }
-                break;
             }
             return info;
         }
@@ -63,6 +66,34 @@ namespace App1.ViewModels
         {
             get { return readModel_Visible; }
             set { SetProperty(ref readModel_Visible, value); }
+        }
+
+        Visibility wizardView_Visible = Visibility.Collapsed;
+        public Visibility WizardView_Visible
+        {
+            get { return wizardView_Visible; }
+            set { SetProperty(ref wizardView_Visible, value); }
+        }
+        
+
+       ICommand changePageFromSideber;
+        public ICommand ChangePageFromSideberCommand
+        {
+            get
+            {
+                return changePageFromSideber = changePageFromSideber ?? new DelegateCommand<PageKind>(
+                (page) => {
+                    SideberCheck = false;
+                    ChangePage(this, new Event.ChangePageEventArgs(page));
+                },
+                () => { return true; });
+            }
+        }
+        bool sideberCheck = false;
+        public bool SideberCheck
+        {
+            get{ return sideberCheck; }
+            set { SetProperty(ref sideberCheck, value); }
         }
 
     }

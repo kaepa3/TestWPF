@@ -25,7 +25,8 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="0.5*"/>
         </Grid.ColumnDefinitions>
-        <Button ToolTip="Icon" Grid.Column="1" Grid.Row="1" Height="auto" MaxHeight="150" MaxWidth="200" >
+        <Button ToolTip="Icon" Grid.Column="1" Grid.Row="1" Height="auto" MaxHeight="150" MaxWidth="200"
+                Command="{ Binding ModelStartCommand}" CommandParameter="{x:Static en:PageKind.WizardView}">
             <Button.Content>
                 <Grid>
                     <Grid.RowDefinitions>

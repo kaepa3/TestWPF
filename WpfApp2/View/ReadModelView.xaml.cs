@@ -1,19 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Windows.Controls;
+using App1.ViewModels;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using App1.Model;
-
+using System;
 namespace WpfApp2.View
 {
     /// <summary>
@@ -24,6 +12,16 @@ namespace WpfApp2.View
         public ReadModelView()
         {
             InitializeComponent();
+            var vm = this.DataContext as ReadModelViewModel;
+            foreach (var i in Enumerable.Range(0, 10)) {
+                string path = System.IO.Path.GetFullPath(String.Format("result/{0:D2}/base.png", i));
+                vm.ListSource.Add(new App1.Model.SaveModelClass()
+                {
+                    ImagePath = path,
+                    MakeTime = DateTime.Now,
+                    Infomation = (i + 1).ToString() + "番目"
+                });
+            }
         }
     }
 }

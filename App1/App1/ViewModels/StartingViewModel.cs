@@ -23,6 +23,19 @@ namespace App1.ViewModels
                 () => { return true; });
             }
         }
+        
+        ICommand newStartCommand;
+        public ICommand NewStartCommand
+        {
+            get
+            {
+                return newStartCommand = newStartCommand ?? new DelegateCommand<PageKind>(
+                (page) => {
+                    ChangePageEvent?.Invoke(this, new Event.ChangePageEventArgs(page));
+                },
+                () => { return true; });
+            }
+        }
 
     }
 }

@@ -14,6 +14,9 @@ namespace WpfApp2
             StartingPage.ViewModel.ChangePageEvent += new ChangePageEventHandler(this.ViewModel.ChangePage);
         }
 
+        private void DemoItemsListBox_Selected(object sender, RoutedEventArgs e)
+        {
 
+        }
     }
 }

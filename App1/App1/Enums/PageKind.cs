@@ -7,6 +7,7 @@ namespace App1.Enums
     public enum PageKind
     {
         Base,
+        WizardView,
         ReadModel
     }
 
@@ -15,7 +16,7 @@ namespace App1.Enums
         // Gender に対する拡張メソッドの定義
         public static string ToKey(this PageKind kind)
         {
-            string[] names = { "Base", "ReadModel" };
+            string[] names = { "Base", "WizardView", "ReadModel" };
             return names[(int)kind];
         }
     }

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace App1.ViewModels
+namespace App1.Enums
 {
-    class TestClass
+    public class WizardPageKind
     {
     }
 }
