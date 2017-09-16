@@ -9,6 +9,8 @@
     <Import_RootNamespace>App1</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Behavior\ApplicationCommandBehavior .cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Enums\WizardPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\PageKind.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Event\ChangePageEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\PageViewModelBase.cs" />
@@ -17,11 +19,15 @@
     <Compile Include="$(MSBuildThisFileDirectory)Interfaces\ILog.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\SaveModelClass.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Logging.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\WizardSelectModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\WizardSelectPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\BaseViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ReadModelViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\SplashViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\StartingViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TestClass.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\WizardViewViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Wizard\ReadBaseImageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Wizard\WizardWindowViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Commands\" />

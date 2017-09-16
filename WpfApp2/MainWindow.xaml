@@ -24,9 +24,13 @@
                                     IsChecked="{Binding ElementName=MenuToggleButton, Path=IsChecked, Mode=TwoWay}" />
                     <ListBox x:Name="DemoItemsListBox" Margin="0 16 0 16" SelectedIndex="0"                         
                              ItemsSource="{Binding DemoItems}" >
-                        <Button Content="初期画面" Command="{Binding ChangePageFromSideberCommand}"
+                        <Button Content="初期画面" 
+                                Style="{StaticResource MaterialDesignFlatButton}"
+                                Command="{Binding ChangePageFromSideberCommand}" 
                                 CommandParameter="{x:Static en:PageKind.Base}"/>
-                        <Button Content="{StaticResource new_start}" Command="{Binding ChangePageFromSideberCommand}"
+                        <Button Content="{StaticResource new_start}" 
+                                Style="{StaticResource MaterialDesignFlatButton}"
+                                Command="{Binding ChangePageFromSideberCommand}"
                                 CommandParameter="{x:Static en:PageKind.WizardView}"/>
 
                     </ListBox>

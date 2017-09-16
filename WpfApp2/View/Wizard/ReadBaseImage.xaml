@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="WpfApp2.View.Wizard.ReadBaseImage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApp2.View.Wizard"
+             xmlns:ctrl="clr-namespace:Controls;assembly=Controls"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.3*"/>
+        </Grid.ColumnDefinitions>
+        <ctrl:ImageViewer DataContext="{Binding ViewSource}"/>
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Button ToolTip="Icon" Height="auto" MaxHeight="150" MaxWidth="200" Command="{Binding ReadImageCommand}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <materialDesign:PackIcon Kind="File" Height="50" Width="50" HorizontalAlignment="Stretch" Margin="0,0,6,0"/>
+                    <TextBlock Text="ファイル読み込み" Grid.Row ="1"/>
+                </Grid>
+            </Button>
+            <Button ToolTip="Icon" Grid.Column="1" Height="auto" MaxHeight="150" MaxWidth="200">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <materialDesign:PackIcon Kind="Camera" Height="50" Width="50" HorizontalAlignment="Stretch" Margin="0,0,6,0"/>
+                    <TextBlock Text="デバイス読み込み" Grid.Row ="1"/>
+                </Grid>
+            </Button>
+        </Grid>
+    </Grid>
+</UserControl>
