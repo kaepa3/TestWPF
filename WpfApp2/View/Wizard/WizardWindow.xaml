@@ -35,14 +35,14 @@
                 <StackPanel Margin="15,0,0,0" Grid.Column="1" Orientation="Horizontal">
                     <TextBlock x:Name="TitleText" Text="{ Binding Text}" 
                            Style="{StaticResource MaterialDesignDisplay1TextBlock}" />
-                    <TextBlock Margin="15,0,0,0" Text="{Binding Page, Converter={StaticResource WizardPageToDescriptionConverter}}" TextAlignment="Left" Style="{StaticResource MaterialDesignDisplay1TextBlock}" />
+                    <TextBlock Margin="15,0,0,0" Text="{Binding PageContent.Page, Converter={StaticResource WizardPageToDescriptionConverter}}" TextAlignment="Left" Style="{StaticResource MaterialDesignDisplay1TextBlock}" />
                 </StackPanel>
 
             </Grid>
             <Separator  BorderBrush="Lime"/>
         </StackPanel>
         <ScrollViewer Grid.Row="1">
-            <ContentControl Content="{Binding Content}" />
+            <ContentControl Content="{Binding PageContent.Content}" />
         </ScrollViewer>
         <Grid Grid.Row="2" >
             <Grid.RowDefinitions>
@@ -51,6 +51,18 @@
             </Grid.RowDefinitions>
             <Separator BorderBrush="Black" Margin="5"/>
             <StackPanel Grid.Row="1" HorizontalAlignment="Right" Orientation="Horizontal" >
+                <Button Margin="5" Style="{StaticResource ButtonMiddle}" Command="{Binding MoveBeforeCommand}" >
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="ArrowLeft" Height="24" Width="24" />
+                        <TextBlock Text="戻る"/>
+                    </StackPanel>
+                </Button>
+                <Button Margin="5" Style="{StaticResource ButtonMiddle}" Command="{Binding MoveNextCommand}" >
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="次へ"/>
+                        <materialDesign:PackIcon Kind="ArrowRight" Height="24" Width="24" />
+                    </StackPanel>
+                </Button>
                 <Button Margin="5" Content="キャンセル" Style="{StaticResource ButtonMiddle}" Command="Close" />
                 <Button Margin="5" Content="完了" Style="{StaticResource ButtonMiddle}" />
             </StackPanel>

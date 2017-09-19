@@ -113,6 +113,9 @@
     <Compile Include="View\Wizard\ReadBaseImage.xaml.cs">
       <DependentUpon>ReadBaseImage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Wizard\SearchPieceView.xaml.cs">
+      <DependentUpon>SearchPieceView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Wizard\WizardWindow.xaml.cs">
       <DependentUpon>WizardWindow.xaml</DependentUpon>
     </Compile>
@@ -146,6 +149,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Wizard\ReadBaseImage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Wizard\SearchPieceView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

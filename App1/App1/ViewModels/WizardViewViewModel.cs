@@ -25,13 +25,24 @@ namespace App1.ViewModels
             {
                 return beginWizardCommand = beginWizardCommand ?? new DelegateCommand<WizardSelectModel>(
                 (item) => {
+                    //  エラーチェック
+                    if (item == null)
+                        return;
+
                     var wnd = new WpfApp2.View.Wizard.WizardWindow();
-                    wnd.DataContext = new Wizard.WizardWindowViewModel()
+                    var datacontext = new Wizard.WizardWindowViewModel()
                     {
                         WizardIcon = item.WizardIcon,
                         Text = item.Text,
-                        Page = WizardPage.ReadBaseImage
+                        PageIndexes = new System.Collections.Generic.List<WizardPage>
+                        {
+                            WizardPage.ReadBaseImage,
+                            WizardPage.SearchPieceView
+                        },
+                        Config = new Model.Wizard.WizardConfig()
                     };
+                    datacontext.GoFirstPage();
+                    wnd.DataContext = datacontext;
                     wnd.ShowDialog();
                 },
                 () => { return true; });

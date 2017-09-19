@@ -6,34 +6,48 @@ using App1.Model;
 using MaterialDesignThemes.Wpf;
 using System.Windows.Input;
 using App1.Enums;
+using App1.Model.Wizard;
+using System.Linq;
 using System.Collections.ObjectModel;
 namespace App1.ViewModels.Wizard
 {
     public class WizardWindowViewModel : ObservableObject
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public WizardWindowViewModel()
         {
-            ListSource = new List<WizardSelectPage>()
+            PageSource = new List<WizardSelectPage>()
             {
                 {
                     new WizardSelectPage{
                         Page = WizardPage.ReadBaseImage,
                         Content = new WpfApp2.View.Wizard.ReadBaseImage(){ DataContext = new ReadBaseImageViewModel()}
                     }
+                },
+
+                {
+                    new WizardSelectPage{
+                        Page = WizardPage.SearchPieceView,
+                        Content = new WpfApp2.View.Wizard.SearchPieceView(){ DataContext = new SearchPieceViewModel()}
+                    }
                 }
             };
         }
-
-
-        List<WizardSelectPage> listSource = new List<WizardSelectPage>();
-        public List<WizardSelectPage> ListSource
+        List<WizardSelectPage> pageSource = new List<WizardSelectPage>();
+        /// <summary>
+        /// 
+        /// </summary>
+        public List<WizardSelectPage> PageSource
         {
-            get { return listSource; }
-            set { SetProperty(ref listSource, value); }
+            get { return pageSource; }
+            set { SetProperty(ref pageSource, value); }
         }
-
-
         PackIconKind wizardIcon;
+        /// <summary>
+        /// 
+        /// </summary>
         public PackIconKind WizardIcon
         {
             get { return wizardIcon; }
@@ -44,6 +58,9 @@ namespace App1.ViewModels.Wizard
         }
 
         string text;
+        /// <summary>
+        /// 
+        /// </summary>
         public string Text
         {
             get { return text; }
@@ -53,29 +70,152 @@ namespace App1.ViewModels.Wizard
             }
         }
 
-        object content;
-        public object Content
+        WizardSelectPage pageContent;
+        /// <summary>
+        /// 
+        /// </summary>
+        public WizardSelectPage PageContent
         {
-            get { return content; }
-            set { SetProperty(ref content, value); }
+            get { return pageContent; }
+            set { SetProperty(ref pageContent, value); }
         }
-        WizardPage page;
-        public WizardPage Page
+
+        List<WizardPage> pageIndexes = new List<WizardPage>();
+        /// <summary>
+        /// 
+        /// </summary>
+        public List<WizardPage> PageIndexes
         {
-            get { return page; }
-            set
+            get { return pageIndexes; }
+            set { SetProperty(ref pageIndexes, value); }
+        }
+        WizardConfig config;
+        /// <summary>
+        /// 
+        /// </summary>
+        public WizardConfig Config
+        {
+            get { return config; }
+            set { config = value; }
+        }
+
+        ICommand moveNextCommand;
+        /// <summary>
+        /// 次へのコマンド
+        /// </summary>
+        public ICommand MoveNextCommand
+        {
+            get
             {
-                foreach (var v in ListSource)
+                return moveNextCommand = moveNextCommand ?? new DelegateCommand(
+                () =>
                 {
-                    if (v.Page == page)
-                    {
-                        Content = v.Content;
-                        break;
-                    }
-                }
-                SetProperty(ref page, value);
+                    ChangePage(() => { return GetNextPage(); });
+                },
+                () => { return true; });
             }
         }
 
+        ICommand moveBeforeCommand;
+        /// <summary>
+        /// 次へのコマンド
+        /// </summary>
+        public ICommand MoveBeforeCommand
+        {
+            get
+            {
+                return moveBeforeCommand = moveBeforeCommand ?? new DelegateCommand(
+                () =>
+                {
+                    ChangePage(() => { return GetBeforePage(); });
+                },
+                () => { return true; });
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        WizardPage GetNextPage()
+        {
+            var nextPage = WizardPage.Non;
+            bool getFlg = false;
+
+            foreach (var v in PageIndexes)
+            {
+                if (getFlg)
+                {
+                    nextPage = v;
+                }
+                else if (v == PageContent.Page)
+                {
+                    getFlg = true;
+                }
+            }
+            return nextPage;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        WizardPage GetBeforePage()
+        {
+            var beforePage = WizardPage.Non;
+            var buffer = WizardPage.Non;
+
+            foreach (var v in PageIndexes)
+            {
+                if (v == PageContent.Page)
+                {
+                    beforePage = buffer;
+                    break;
+                }
+                buffer = v;
+            }
+            return beforePage;
+        }
+
+        WizardSelectPage GetPageContent(WizardPage page)
+        {
+            foreach (var v in PageSource)
+            {
+                if (page == v.Page)
+                {
+                    return v;
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void GoFirstPage()
+        {
+            if (PageIndexes.Count != 0)
+            {
+                ChangePage(() => { return PageIndexes[0]; });
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="nextPageAction"></param>
+        void ChangePage(Func<WizardPage> nextPageAction)
+        {
+            var page = GetPageContent(nextPageAction());
+            if (page != null)
+            {
+                if (PageContent != null)
+                {
+                    config.SaveConfig(PageContent);
+                }
+                config.CreateConfig(page);
+                PageContent = page;
+            }
+
+        }
     }
 }

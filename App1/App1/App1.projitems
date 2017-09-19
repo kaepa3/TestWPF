@@ -21,12 +21,14 @@
     <Compile Include="$(MSBuildThisFileDirectory)Logging.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\WizardSelectModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\WizardSelectPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\Wizard\WizardConfig.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\BaseViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ReadModelViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\SplashViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\StartingViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\WizardViewViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Wizard\ReadBaseImageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Wizard\SearchPieceViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Wizard\WizardWindowViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
