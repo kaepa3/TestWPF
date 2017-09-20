@@ -20,6 +20,9 @@ namespace WpfApp2.Converter
                 case WizardPage.ReadBaseImage:
                     description = "検査の基準になる画像を設定します。";
                     break;
+                case WizardPage.SearchPieceView:
+                    description = "基準となるピースを選択してください";
+                    break;
                 default:
                     break;
             }

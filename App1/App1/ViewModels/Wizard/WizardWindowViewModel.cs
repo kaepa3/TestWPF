@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using App1.Helpers;
 using App1.Model;
 using MaterialDesignThemes.Wpf;
 using System.Windows.Input;
 using App1.Enums;
 using App1.Model.Wizard;
-using System.Linq;
-using System.Collections.ObjectModel;
 namespace App1.ViewModels.Wizard
 {
     public class WizardWindowViewModel : ObservableObject

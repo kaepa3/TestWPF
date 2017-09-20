@@ -19,23 +19,23 @@
                 <ColumnDefinition/>
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Button ToolTip="Icon" Height="auto" MaxHeight="150" MaxWidth="200" Command="{Binding ReadImageCommand}">
+            <Button Style="{StaticResource IconButton}" Command="{Binding ReadImageCommand}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
-                    <materialDesign:PackIcon Kind="File" Height="50" Width="50" HorizontalAlignment="Stretch" Margin="0,0,6,0"/>
+                    <materialDesign:PackIcon Kind="File" Height="50" Width="50" HorizontalAlignment="Stretch"/>
                     <TextBlock Text="ファイル読み込み" Grid.Row ="1"/>
                 </Grid>
             </Button>
-            <Button ToolTip="Icon" Grid.Column="1" Height="auto" MaxHeight="150" MaxWidth="200">
+            <Button Grid.Column="1" Style="{StaticResource IconButton}" >
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
-                    <materialDesign:PackIcon Kind="Camera" Height="50" Width="50" HorizontalAlignment="Stretch" Margin="0,0,6,0"/>
+                    <materialDesign:PackIcon Kind="Camera" Height="50" Width="50" HorizontalAlignment="Stretch"/>
                     <TextBlock Text="デバイス読み込み" Grid.Row ="1"/>
                 </Grid>
             </Button>
