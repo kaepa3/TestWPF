@@ -1,12 +1,12 @@
-﻿<UserControl x:Class="WpfApp2.View.Wizard.SearchPieceView"
+﻿<UserControl x:Class="WpfApp2.View.Wizard.BasePieceView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfApp2.View.Wizard"
+             mc:Ignorable="d" 
              xmlns:ctrl="clr-namespace:Controls;assembly=Controls"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -19,7 +19,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Button Style="{StaticResource IconButton}" Command="{Binding SearchPieceCommand}">
+            <Button Style="{StaticResource IconButton}" Command="{Binding SearchBasePieceCommand}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
@@ -29,7 +29,16 @@
                     <TextBlock Text="自動検出" Grid.Row ="1"/>
                 </Grid>
             </Button>
+            <Button Grid.Column="1" Style="{StaticResource IconButton}" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <materialDesign:PackIcon Kind="BorderOutside" Height="50" Width="50" HorizontalAlignment="Stretch"/>
+                    <TextBlock Text="境界" Grid.Row ="1" HorizontalAlignment="Center"/>
+                </Grid>
+            </Button>
         </Grid>
-            
     </Grid>
 </UserControl>

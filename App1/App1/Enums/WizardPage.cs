@@ -9,6 +9,7 @@ namespace App1.Enums
     {
         Non,
         ReadBaseImage,
+        BasePieceView,
         SearchPieceView
     }
 }

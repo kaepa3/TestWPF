@@ -45,11 +45,12 @@ namespace App1.Model.Wizard
                 case Enums.WizardPage.ReadBaseImage:
                     CreateReadBaseImage((ReadBaseImage)content.Content);
                     break;
+                case Enums.WizardPage.BasePieceView:
+                    CreateBasePieceView((BasePieceView)content.Content);
+                    break;
                 case Enums.WizardPage.SearchPieceView:
                     CreateSearchPieceView((SearchPieceView)content.Content);
-
                     break;
-
                 default:
                     Logging.info("設定なしエラー:" + content.Page.ToString());
                     break;
@@ -70,6 +71,14 @@ namespace App1.Model.Wizard
         /// <summary>
         /// 
         /// </summary>
+        void CreateBasePieceView(BasePieceView view)
+        {
+            var data = view.DataContext as ViewModels.Wizard.BasePieceViewModel;
+            if (this.MaterImage != null)
+            {
+                data.ViewSource.ViewImage = this.MaterImage;
+            }
+        }
         void CreateSearchPieceView(SearchPieceView view)
         {
             var data = view.DataContext as ViewModels.Wizard.SearchPieceViewModel;
@@ -77,7 +86,6 @@ namespace App1.Model.Wizard
             {
                 data.ViewSource.ViewImage = this.MaterImage;
             }
-
         }
     }
 }

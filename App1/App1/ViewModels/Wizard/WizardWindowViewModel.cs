@@ -23,7 +23,12 @@ namespace App1.ViewModels.Wizard
                         Content = new WpfApp2.View.Wizard.ReadBaseImage(){ DataContext = new ReadBaseImageViewModel()}
                     }
                 },
-
+                {
+                    new WizardSelectPage{
+                        Page = WizardPage.BasePieceView,
+                        Content = new WpfApp2.View.Wizard.BasePieceView(){ DataContext = new BasePieceViewModel()}
+                    }
+                },
                 {
                     new WizardSelectPage{
                         Page = WizardPage.SearchPieceView,
@@ -144,6 +149,7 @@ namespace App1.ViewModels.Wizard
                 if (getFlg)
                 {
                     nextPage = v;
+                    break;
                 }
                 else if (v == PageContent.Page)
                 {

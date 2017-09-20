@@ -11,20 +11,19 @@ namespace WpfApp2.Converter
 {
     public class WizardPageToDescriptionConverter : IValueConverter
     {
+        static Dictionary<WizardPage, string> messageList  = new Dictionary<WizardPage, string>()
+        {
+            {WizardPage.ReadBaseImage,  "検査の基準になる画像を設定します。"},
+            {WizardPage.BasePieceView,  "基準となるピースを選択してください。"},
+            {WizardPage.SearchPieceView,  "類似するピースを検索します。"},
+        };
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var type= (WizardPage)value ;
             string description = "サポートされていません";
-            switch (type)
+            if (messageList.ContainsKey(type))
             {
-                case WizardPage.ReadBaseImage:
-                    description = "検査の基準になる画像を設定します。";
-                    break;
-                case WizardPage.SearchPieceView:
-                    description = "基準となるピースを選択してください";
-                    break;
-                default:
-                    break;
+                description = messageList[type];
             }
             return description;
         }

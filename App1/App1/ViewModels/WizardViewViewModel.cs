@@ -37,7 +37,8 @@ namespace App1.ViewModels
                         PageIndexes = new System.Collections.Generic.List<WizardPage>
                         {
                             WizardPage.ReadBaseImage,
-                            WizardPage.SearchPieceView
+                            WizardPage.BasePieceView,
+                            WizardPage.SearchPieceView,
                         },
                         Config = new Model.Wizard.WizardConfig()
                     };

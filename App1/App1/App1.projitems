@@ -28,6 +28,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\StartingViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\WizardViewViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Wizard\ReadBaseImageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Wizard\BasePieceViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Wizard\SearchPieceViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Wizard\WizardWindowViewModel.cs" />
   </ItemGroup>

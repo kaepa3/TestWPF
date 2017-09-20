@@ -49,8 +49,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Controls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Controls.1.0.0.0\lib\net452\Controls.dll</HintPath>
+    <Reference Include="Controls, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Controls.1.0.0.1\lib\net452\Controls.dll</HintPath>
     </Reference>
     <Reference Include="Localization, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Localization.1.0.0.0\lib\net452\Localization.dll</HintPath>
@@ -113,6 +113,9 @@
     <Compile Include="View\Wizard\ReadBaseImage.xaml.cs">
       <DependentUpon>ReadBaseImage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Wizard\BasePieceView.xaml.cs">
+      <DependentUpon>BasePieceView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Wizard\SearchPieceView.xaml.cs">
       <DependentUpon>SearchPieceView.xaml</DependentUpon>
     </Compile>
@@ -149,6 +152,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Wizard\ReadBaseImage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Wizard\BasePieceView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
